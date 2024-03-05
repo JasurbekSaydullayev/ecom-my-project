@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Product, Category
+from .models import Product, Category, Customer
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import SignUpForm
@@ -70,3 +70,10 @@ def register_user(request):
             return redirect('register')
     else:
         return render(request, 'register.html', {'form': form})
+
+
+def profile_view(request, username):
+    user = Customer.objects.filter(username=username)
+    if not user:
+        return redirect('home')
+    return render(request, 'profile_detail.html', {'context': user})

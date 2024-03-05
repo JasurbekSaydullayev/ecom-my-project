@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <center>
+                            <h5 class="card-title">Username: {{ user.username }}</h5>
+                                <br/>
+
+                            <p class="card-text justified">Ismi: {{ user.first_name }}</p>
+                            <p class="card-text justified">Familiyasi: {{ user.last_name }}</p>
+                            {% if user.email %}
+                            <p class="card-text justified">Email: {{ user.email }}</p>
+                            {% endif %}
+                            {% if user.phone_number %}
+                            <p class="card-text justified">Telefon raqam: {{ user.phone_number }}</p>
+                            {% endif %}
+                            <br/><br/>
+                            <a href="{% url 'home' %}" class="btn btn-secondary">Bosh Sahifa</a>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
